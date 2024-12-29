@@ -18,4 +18,27 @@ const App = () => {
     const user = await CheckSession()
     setUser(user)
   }
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
+
+  return (
+    <div className="App">
+      <Nav user={user} handleLogOut={handleLogOut} />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn setUser={setUser} />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route
+            path="/ViewCategories"
+            element={<ViewCategories user={user} />}
+          />
+        </Routes>
+      </main>
+    </div>
+  )
 }
