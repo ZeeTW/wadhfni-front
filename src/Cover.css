@@ -1,0 +1,29 @@
+.cover {
+    background-image: url('/images/Cover-BackGround.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+#freelancer-button {
+    position: relative;
+    right: 100px;
+    top: 198px;
+    width: 264px;
+    height: 105px;
+    background-color: #eab676;
+    font-size: 30px;
+    color: black;
+}
+
+#employer-button {
+    position: relative;
+    left: 59px;
+    top: 198px;
+    width: 267px;
+    height: 105px;
+    background-color: #eab676;
+    font-size: 30px;
+    color: black;
+}

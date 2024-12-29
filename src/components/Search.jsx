@@ -6,7 +6,7 @@ const Search = ({ onSubmit, onChange, value }) => {
         type="text"
         name="search"
         value={value}
-        placeholder="Search Games"
+        placeholder="Search Services"
         onChange={onChange}
         />
         <button type="submit">Search</button>
