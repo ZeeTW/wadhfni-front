@@ -5,19 +5,16 @@ const Nav = ({ user, handleLogOut }) => {
   if (user) {
     userOptions = (
       <nav>
-        <h3>Welcome {user.email}!</h3>
-        <Link to="/feed">Feed</Link>
-        <Link onClick={handleLogOut} to="/">
-          Sign Out
-        </Link>
+        <Link to="/About">About</Link>
+        <Link to="/ViewCategories">View Categories</Link>
+        <Link onClick={handleLogOut} to="/">Sign Out</Link>
       </nav>
     )
   }
 
   const publicOptions = (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/SignUp">SignUp</Link>
+      <Link to="/SignUp">Sign Up</Link>
       <Link to="/signin">Sign In</Link>
     </nav>
   )
