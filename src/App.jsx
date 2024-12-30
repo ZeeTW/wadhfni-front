@@ -6,11 +6,9 @@ const App = () => {
   return (
     <div>
       <main>
-        <Router>
-          <Routes>
-            <Route path="./pages/ViewCategories" element={<ViewCategories />} />
-          </Routes>
-        </Router>
+        <Routes>
+          <Route path="/" element={<ViewCategories />} />
+        </Routes>
       </main>
     </div>
   )
