@@ -1,3 +1,7 @@
+import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
+
 const ServiceDetails = () => {
   return (
     <div>

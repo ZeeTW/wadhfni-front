@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import React from 'react'
 import {
@@ -8,7 +8,7 @@ import {
   NavLink
 } from 'react-router-dom'
 import Home from './HomePage'
-import About from './About'
+import About from './pages/About'
 import Services from './Services'
 
 const App = () => {
