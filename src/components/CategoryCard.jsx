@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GetCategories } from '../services/Category'
+import { GetCategories } from '../services/Category' // Assuming you already have this service
 
 const CategoryCard = () => {
   const [categories, setCategories] = useState([])
+  const [error, setError] = useState(null)
 
+  // Fetch categories from the backend
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+        // Fetching all categories (list of categories)
         const data = await GetCategories()
-        console.log('Fetched Categories:', data) // Log the data to verify the response
-        setCategories(data) // Set the categories from the API response
+        setCategories(data) // Save categories to state
       } catch (error) {
+        setError('Error fetching categories') // Handle any errors
         console.error('Error fetching categories:', error)
       }
     }
@@ -23,21 +26,26 @@ const CategoryCard = () => {
     <div className="category-cards-container">
       <h3>Browse by Categories</h3>
       <div className="category-cards">
-        {categories.length > 0 ? (
+        {/* If there's an error, show it */}
+        {error ? (
+          <p>{error}</p>
+        ) : categories.length > 0 ? (
           categories.map((category) => (
-            <div key={category.id} className="category-card">
+            <div key={category._id} className="category-card">
               <Link
-                to={`/services?category=${category.name}`}
+                to={`/services?category=${category.name}`} // Navigate to services page based on category name
                 className="category-link"
               >
                 <div className="category-card-content">
                   <h4>{category.name}</h4>
+                  <p>{category.description}</p>{' '}
+                  {/* Show category description */}
                 </div>
               </Link>
             </div>
           ))
         ) : (
-          <p>Loading categories...</p>
+          <p>Loading categories...</p> // Loading state while data is being fetched
         )}
       </div>
     </div>
