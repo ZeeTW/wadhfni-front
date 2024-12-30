@@ -1,14 +1,16 @@
-// import { useState, useEffect } from 'react'
-import { Route, Router, Routes } from 'react-router'
-import HomePage from './pages/HomePage'
+import './App.css'
 
 const App = () => {
   return (
-    <main>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </main>
+    <div>
+      <main>
+        <Router>
+          <Routes>
+            <Route path="/category/:categoryId" element={<CategoryPage />} />
+          </Routes>
+        </Router>
+      </main>
+    </div>
   )
 }
 

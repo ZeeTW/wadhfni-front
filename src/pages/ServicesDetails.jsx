@@ -14,6 +14,7 @@ const ServiceDetails = () => {
         <li>Service 1: Jobs application</li>
         <li>Service 2: Graphic design</li>
         <li>Service 3: Digital Marketing</li>
+        <li>service 4: </li>
       </ul>
       <p>For more details, contact us or visit our website.</p>
     </div>

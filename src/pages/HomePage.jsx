@@ -1,15 +1,26 @@
+import React, { useState } from 'react'
+import Search from '../components/Search'
+import NavLinks from '../components/NavLinks'
+
 const Home = () => {
-  let navigate = useNavigate()
+  const [searchValue, setSearchValue] = useState('')
+
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value)
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    console.log('Search for:', searchValue)
+  }
 
   return (
-    <div className="home-container col">
-      <img src={Welcome} alt="welcome" />
-
-      <section className="welcome-signin">
-        <button onClick={() => navigate('/signin')}>
-          Click Here To Get Started
-        </button>
-      </section>
+    <div>
+      <Search
+        value={searchValue}
+        onChange={handleSearchChange}
+        onSubmit={handleSearchSubmit}
+      />
     </div>
   )
 }
