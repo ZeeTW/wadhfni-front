@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const ViewCategories = () => {
   const { genreId } = useParams()
-  const [games, setGames] = useState([])
+  const [categories, setCategories] = useState([])
   const navigate = useNavigate()
 }
 
