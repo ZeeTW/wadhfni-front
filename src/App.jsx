@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import { Route, Routes } from 'react-router'
-import './App.css'
 import CategoryPage from './pages/Category'
 
 const App = () => {
