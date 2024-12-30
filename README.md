@@ -1,4 +1,4 @@
-# Wa'9fni Application
+# Wa'6fni Application
 
 ![Alt text for the image](./images/Screenshot%202024-12-25%20at%2019.10.32.png)
 
