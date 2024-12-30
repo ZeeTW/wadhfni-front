@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
+import ViewCategories from './pages/ViewCategories'
 
 const App = () => {
   return (
@@ -7,7 +8,7 @@ const App = () => {
       <main>
         <Router>
           <Routes>
-            <Route path="/category/:categoryId" element={<CategoryPage />} />
+            <Route path="./pages/ViewCategories" element={<ViewCategories />} />
           </Routes>
         </Router>
       </main>
