@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
+import OrderDetails from './pages/OrderDetails'
+import ViewCategories from './pages/ViewCategories'
 
 const App = () => {
   return (
     <div>
       <main>
-        <Router>
           <Routes>
-            <Route path="/category/:categoryId" element={<CategoryPage />} />
+            <Route path="/" element={<ViewCategories />} />
           </Routes>
-        </Router>
       </main>
     </div>
   )
