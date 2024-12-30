@@ -1,19 +1,51 @@
-import axios from 'axios'
+import Client from './api'
 
-// services/Category.js
-
-// services/Category.js
-
+// 📝 Fetch all categories
 export const GetCategories = async () => {
   try {
-    const response = await fetch('/categories') // API endpoint to fetch categories
-    if (!response.ok) {
-      throw new Error('Network response was not ok')
-    }
-    const data = await response.json() // Assuming the response is an array of categories
-    return data
+    const res = await Client.get('/categories') // Adjust route if necessary
+    return res.data
   } catch (error) {
-    console.error('Error fetching categories:', error)
-    throw error // Rethrow error so we can handle it in the component
+    throw error
+  }
+}
+
+// 📝 Fetch a single category by ID
+export const GetCategoryById = async (id) => {
+  try {
+    const res = await Client.get(`/categories/${id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+// 📝 Create a new category
+export const CreateCategory = async (data) => {
+  try {
+    const res = await Client.post('/categories', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+// 📝 Update a category by ID
+export const UpdateCategory = async (id, data) => {
+  try {
+    const res = await Client.put(`/categories/${id}`, data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+// 📝 Delete a category by ID
+export const DeleteCategory = async (id) => {
+  try {
+    const res = await Client.delete(`/categories/${id}`)
+    return res.data
+  } catch (error) {
+    throw error
   }
 }
