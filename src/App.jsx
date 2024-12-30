@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import Nav from './components/Nav'
+import NavLinks from './components/NavLinks'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Feed from './pages/Feed'
@@ -10,10 +11,12 @@ import About from './pages/About'
 import OrderDetails from './pages/OrderDetails'
 import PendingOrder from './pages/PendingOrder'
 import Profile from './pages/Profile'
+import ServiceForm from './pages/ServiceForm'
 import ServiceDetails from './pages/ServiceDetails'
 import ViewCategories from './pages/ViewCategories'
 import './App.css'
 import { CheckSession } from './services/Auth'
+
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -41,6 +44,8 @@ const App = () => {
         user={user}
         handleLogOut={handleLogOut}
       />
+
+      <NavLinks />
       <main>
         <Routes>
           <Route path="/" element={<Cover />} />
@@ -54,6 +59,7 @@ const App = () => {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/feed" element={<Feed user={ user } />} />
+          <Route path="/ServiceForm" element={<ServiceForm />} />
         </Routes>
       </main>
     </div>

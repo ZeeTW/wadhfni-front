@@ -1,38 +1,32 @@
 import { Link } from 'react-router-dom'
 
-const Nav = ({ user, handleLogOut }) => {
-  let userOptions
-  if (user) {
-    userOptions = (
+const Nav = ({ handleLogOut, user }) => {
+  
+if (user){
+  <div>
       <nav>
         <Link to="/About">About</Link>
         <Link to="/ViewCategories">View Categories</Link>
         <Link onClick={handleLogOut} to="/">Sign Out</Link>
       </nav>
-    )
-  }
+      
+      <a href="/">
+        <img
+          src="<%= user.profilePicture %>"
+          id="profile-image"
+          width="60"
+          height="60"
+          style="border-radius: 50%"
+        />
+      </a>
+      </div>
 
-  const publicOptions = (
-    <nav>
-      <Link to="/SignUp">Sign Up</Link>
-      <Link to="/signin">Sign In</Link>
-    </nav>
-  )
+}
 
   return (
-    <header>
-      <Link to="/">
-        <div className="logo-wrapper" alt="logo">
-          {/* <img
-            className="logo"
-            src="https://avatars.dicebear.com/api/gridy/app.svg"
-            alt="welcome banner"
-          /> */}
-        </div>
-        
-      </Link>
-      {user ? userOptions : publicOptions}
-    </header>
+  <div>
+
+  </div>
   )
 }
 

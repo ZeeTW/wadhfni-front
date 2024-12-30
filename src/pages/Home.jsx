@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Search from '../components/Search'
+import NavLinks from '../components/NavLinks'
 
 const Home = () => {
     const [searchValue, setSearchValue] = useState('')
@@ -8,7 +9,7 @@ const Home = () => {
         setSearchValue(e.target.value)
     };
 
-   
+
     const handleSearchSubmit = (e) => {
         e.preventDefault()
         console.log('Search for:', searchValue)
