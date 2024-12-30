@@ -8,11 +8,12 @@ const OrderDetails = () => {
       <h2>Order Details</h2>
       <p>Here you can view the details of the order.</p>
       <ul>
-        <li>Order ID: </li>
-        <li>Customer Name: </li>
-        <li>Status: </li>
-        <li>Total Price: $199.99</li>
-        <li>Items Ordered: 3</li>
+        <li>Order ID: {props.user.orderId}</li>
+        <li>Customer Name: {props.user.name}</li>
+        <li>Status: {props.user.status}</li>
+        <li>Total Price: {props.user.price} BHD</li>
+        <li>Date Ordered: {props.user.dateOrder}</li>
+        <li>Delivery Date: {props.user.deliveryDate}</li>
       </ul>
     </div>
   )

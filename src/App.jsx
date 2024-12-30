@@ -1,7 +1,15 @@
 // import { useState, useEffect } from 'react'
-import React from 'react'
-import Home from './HomePage'
+import { Route, Router, Routes } from 'react-router'
+import HomePage from './pages/HomePage'
 
-const App = () => {}
+const App = () => {
+  return (
+    <main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </main>
+  )
+}
 
 export default App
