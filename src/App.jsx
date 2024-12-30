@@ -17,7 +17,6 @@ import ViewCategories from './pages/ViewCategories'
 import './App.css'
 import { CheckSession } from './services/Auth'
 
-
 const App = () => {
   const [user, setUser] = useState(null)
 
@@ -40,10 +39,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav
-        user={user}
-        handleLogOut={handleLogOut}
-      />
+      <Nav user={user} handleLogOut={handleLogOut} />
 
       <NavLinks />
       <main>
@@ -58,7 +54,7 @@ const App = () => {
           <Route path="/ServiceDetails" element={<ServiceDetails />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/feed" element={<Feed user={ user } />} />
+          <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/ServiceForm" element={<ServiceForm />} />
         </Routes>
       </main>

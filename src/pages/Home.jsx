@@ -1,29 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Search from '../components/Search'
 import NavLinks from '../components/NavLinks'
+import CategoryCard from '../components/CategoryCard' // Importing CategoryCard
 
 const Home = () => {
-    const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState('')
 
-    const handleSearchChange = (e) => {
-        setSearchValue(e.target.value)
-    };
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value)
+  }
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    console.log('Search for:', searchValue)
+  }
 
-    const handleSearchSubmit = (e) => {
-        e.preventDefault()
-        console.log('Search for:', searchValue)
-    }
+  return (
+    <div>
+      {/* Search Bar */}
+      <Search
+        value={searchValue}
+        onChange={handleSearchChange}
+        onSubmit={handleSearchSubmit}
+      />
+      {/* Category Section */}
+      <CategoryCard /> {/* Add CategoryCard component below the search */}
+    </div>
+  )
+}
 
-    return (
-        <div>
-            <Search 
-                value={searchValue}
-                onChange={handleSearchChange}
-                onSubmit={handleSearchSubmit}
-            />
-        </div>
-    );
-};
-
-export default Home;
+export default Home

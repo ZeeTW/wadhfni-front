@@ -3,10 +3,8 @@ import { SignInUser } from '../services/Auth'
 import { useNavigate, Link } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
-
   let navigate = useNavigate()
-
-  let initialState = { email: '', password: ''}
+  let initialState = { email: '', password: '' }
 
   const [formValues, setFormValues] = useState({ email: '', password: '' })
 
@@ -16,16 +14,31 @@ const SignIn = ({ setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await SignInUser(formValues)
-setFormValues(initialState)
-setUser(payload)
-navigate('/feed')
+    try {
+      // Call the SignInUser function from services to log in
+      const payload = await SignInUser(formValues)
+
+      // Reset the form values after successful login
+      setFormValues(initialState)
+
+      // Set user context
+      setUser(payload)
+
+      // Store the token in localStorage
+      localStorage.setItem('token', payload.token)
+
+      // Redirect to home page after successful login
+      navigate('/home')
+    } catch (error) {
+      console.error('SignIn error:', error)
+      // Handle error (show error message)
+    }
   }
 
   return (
     <div className="signin col">
       <div className="card-overlay centered">
-        <div className='title-of-SignIn'>
+        <div className="title-of-SignIn">
           <h2>IF YOU HAVE AN ACCOUNT</h2>
           <p>Sign In</p>
         </div>
@@ -41,7 +54,7 @@ navigate('/feed')
               required
             />
           </div>
-          
+
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
@@ -52,14 +65,14 @@ navigate('/feed')
               required
             />
           </div>
-          
+
           <button disabled={!formValues.email || !formValues.password}>
             Sign In
           </button>
         </form>
         <p>A new Member to the Family??</p>
         <p>
-          Go Ahead and <Link to="/SignUp">Sign Up</Link> 
+          Go Ahead and <Link to="/SignUp">Sign Up</Link>
         </p>
       </div>
     </div>

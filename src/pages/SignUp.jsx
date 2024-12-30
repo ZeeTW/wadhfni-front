@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { SignUpUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 
-
 const SignUp = () => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
@@ -10,38 +9,47 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: ''
-  }
-  )
-  
+  })
+
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await SignUpUser({
-      name: formValues.name,
-      email: formValues.email,
-      password: formValues.password
-    })
-    setFormValues({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    })
-    navigate('/signin')
+    try {
+      // Call the SignUpUser function from services
+      await SignUpUser({
+        name: formValues.name,
+        email: formValues.email,
+        password: formValues.password
+      })
+
+      // Reset the form values after successful signup
+      setFormValues({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      })
+
+      // Redirect to the sign-in page after registration
+      navigate('/signin')
+    } catch (error) {
+      console.error('Signup error:', error)
+      // Add any error handling here, e.g., set error state
+    }
   }
 
   return (
     <div className="signin col">
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
-        <div className='title-of-SignUp'>
-          <h2>WELCOME NEW MEMBER!</h2>
-          <p>Sign Up</p>
-        </div>
-          
+          <div className="title-of-SignUp">
+            <h2>WELCOME NEW MEMBER!</h2>
+            <p>Sign Up</p>
+          </div>
+
           <div className="input-wrapper">
             <label htmlFor="name">Name</label>
             <input
@@ -88,11 +96,10 @@ const SignUp = () => {
           <button
             disabled={
               !formValues.email ||
-              (!formValues.password &&
-                formValues.confirmPassword === formValues.password)
+              formValues.password !== formValues.confirmPassword
             }
           >
-            Sign In
+            Sign Up
           </button>
         </form>
       </div>
