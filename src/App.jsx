@@ -15,6 +15,7 @@ import ServiceDetails from './pages/ServiceDetails'
 import ViewCategories from './pages/ViewCategories'
 import './App.css'
 import { CheckSession } from './services/Auth'
+import Services from './pages/Services'
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogOut = () => {
@@ -34,7 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <Nav user={user} handleLogOut={handleLogOut} />
-      
+
       <main>
         <Routes>
           <Route path="/" element={<Cover />} />
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/ServiceForm" element={<ServiceForm />} />
+          <Route path={'/services'} element={<Services/>} />
         </Routes>
       </main>
     </div>

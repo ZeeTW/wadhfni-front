@@ -9,7 +9,12 @@ const CategoryCard = () => {
     const fetchCategories = async () => {
       try {
         const data = await GetCategories()
-        setCategories(data)
+        console.log('Fetched Categories:', data)  // Check the structure of the response
+        if (Array.isArray(data)) {
+          setCategories(data)
+        } else {
+          console.error('The fetched data is not an array:', data)
+        }
       } catch (error) {
         console.error('Failed to fetch categories:', error)
       }
@@ -25,7 +30,7 @@ const CategoryCard = () => {
           categories.map((category) => (
             <div key={category._id} className="category-card">
               <Link
-                to={`/services?category=${category.name}`}
+                to={`/services?categoryId=${category._id}`}
                 className="category-link"
               >
                 <div className="category-card-content">

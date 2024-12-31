@@ -1,9 +1,9 @@
-import Client from './api'
+import axios from 'axios'
 
-// 📝 Fetch all categories
+// Fetch all categories
 export const GetCategories = async () => {
   try {
-    const res = await Client.get('/categories') // Adjust route if necessary
+    const res = await axios.get('http://localhost:3001/categories') 
     return res.data
   } catch (error) {
     throw error
@@ -13,7 +13,7 @@ export const GetCategories = async () => {
 // 📝 Fetch a single category by ID
 export const GetCategoryById = async (id) => {
   try {
-    const res = await Client.get(`/categories/${id}`)
+    const res = await axios.get(`/categories/${id}`)
     return res.data
   } catch (error) {
     throw error
