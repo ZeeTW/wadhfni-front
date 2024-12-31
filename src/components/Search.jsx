@@ -1,17 +1,18 @@
-const Search = ({ onSubmit, onChange, value }) => {
-
-    return (
-    <form onSubmit={onSubmit}>
-        <input
+const Search = ({ value, onChange, onSubmit }) => {
+  return (
+    <form onSubmit={onSubmit} className="search-form">
+      <input
         type="text"
-        name="search"
         value={value}
-        placeholder="Search Services"
         onChange={onChange}
-        />
-        <button type="submit">Search</button>
+        placeholder="Search for services..."
+        className="search-input"
+      />
+      <button type="submit" className="search-button">
+        Search
+      </button>
     </form>
-    )
+  )
 }
 
 export default Search
