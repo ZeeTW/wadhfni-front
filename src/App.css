@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* home.css */
 .search-bar-container {
   margin: 20px;
@@ -35,6 +36,11 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+=======
+body {
+  margin: 0;
+  background-color: aqua;
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
 }
 
 .search-input {

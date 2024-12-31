@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { SignInUser } from '../services/Auth'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
   let initialState = { email: '', password: '' }
 
   const [formValues, setFormValues] = useState({ email: '', password: '' })
@@ -14,6 +18,7 @@ const SignIn = ({ setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+<<<<<<< HEAD
     try {
       // Call the SignInUser function from services to log in
       const payload = await SignInUser(formValues)
@@ -33,15 +38,24 @@ const SignIn = ({ setUser }) => {
       console.error('SignIn error:', error)
       // Handle error (show error message)
     }
+=======
+    const payload = await SignInUser(formValues)
+    setFormValues(initialState)
+    setUser(payload)
+    navigate('/feed')
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
   }
 
   return (
     <div className="signin col">
       <div className="card-overlay centered">
+<<<<<<< HEAD
         <div className="title-of-SignIn">
           <h2>IF YOU HAVE AN ACCOUNT</h2>
           <p>Sign In</p>
         </div>
+=======
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
@@ -54,7 +68,10 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
@@ -65,15 +82,21 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
           <button disabled={!formValues.email || !formValues.password}>
             Sign In
           </button>
         </form>
+<<<<<<< HEAD
         <p>A new Member to the Family??</p>
         <p>
           Go Ahead and <Link to="/SignUp">Sign Up</Link>
         </p>
+=======
+>>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
       </div>
     </div>
   )
