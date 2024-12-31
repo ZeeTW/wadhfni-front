@@ -3,6 +3,9 @@ const OrderCard = ({ onClick, image, name, rating }) => {
     <div className="card order-card" onClick={onClick}>
       <div className="img-wrapper">
         <img src={image} alt={name} />
+        <button id="Order-List" onClick={() => navigate('/OrderDetails')}>
+          Order Details:
+        </button>
       </div>
 
       <div className="info-wrapper">
