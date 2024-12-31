@@ -1,14 +1,9 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
-<<<<<<< HEAD
 import { CheckSession } from './services/Auth'
-=======
-import ViewCategories from './pages/ViewCategories'
->>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
 
 const App = () => {
   return (
-<<<<<<< HEAD
     <div className="App">
       <Nav user={user} handleLogOut={handleLogOut} />
 
@@ -27,12 +22,6 @@ const App = () => {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/ServiceForm" element={<ServiceForm />} />
-=======
-    <div>
-      <main>
-        <Routes>
-          <Route path="/" element={<ViewCategories />} />
->>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
         </Routes>
       </main>
     </div>
