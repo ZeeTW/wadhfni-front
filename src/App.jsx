@@ -45,12 +45,15 @@ const App = () => {
           <Route path="/PendingOrder" element={<PendingOrder />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/ViewCategories" element={<ViewCategories />} />
-          <Route path="/ServiceDetails" element={<ServiceDetails />} />
+          <Route
+            path="/ServiceDetails/:serviceId"
+            element={<ServiceDetails />}
+          />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/ServiceForm" element={<ServiceForm />} />
-          <Route path={'/services'} element={<Services/>} />
+          <Route path={'/services'} element={<Services />} />
         </Routes>
       </main>
     </div>
