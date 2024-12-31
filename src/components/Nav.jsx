@@ -1,36 +1,30 @@
 import { Link } from 'react-router-dom'
 
 const Nav = ({ handleLogOut, user }) => {
-  return (
-    <nav>
-      <div>
-        {user && (
-          <>
-            <Link to="/About">About</Link>
-            <Link to="/ViewCategories">View Categories</Link>
-            <Link onClick={handleLogOut} to="/">
-              Sign Out
-            </Link>
-          </>
-        )}
-      </div>
+  let userOptions
+  if(user){
+    userOptions=(
+      <nav>
+        <h3>Welcome {user.name}</h3>
+        <Link to='/About'>About</Link>
+        <Link onClick = {handleLogOut} to='/'>Sign Out</Link>
+      </nav>
+    )
+  }
 
-      <div>
-        {user && (
-          <>
-            <a href="/auth/profile">
-              <img
-                src="<%= user.profilePicture %>"
-                id="profile-image"
-                width="60"
-                height="60"
-                style="border-radius: 50%"
-              />
-            </a>
-          </>
-        )}
-      </div>
+  const publicOptions = (
+    <nav>
+      <Link to='/'>Home</Link>
+      <Link to='/register'>Register</Link>
+      <Link to='/signin'>Sign In</Link>
     </nav>
+  )
+  return (
+    
+    
+    <header>
+      {user ? userOptions:publicOptions}
+    </header>
   )
 }
 
