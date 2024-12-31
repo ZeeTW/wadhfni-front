@@ -1,25 +1,49 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 
 const ServiceDetails = () => {
-  const { ServiceDetails } = useParams()
-  const [services, setServiceDetails] = useState({})
+  const [searchParams] = useSearchParams()
+  const serviceId = searchParams.get('serviceId') // Get serviceId from query params
+  const [service, setService] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchServiceDetails = async () => {
+      try {
+        if (!serviceId) return
+        const res = await axios.get(`/api/services/${serviceId}`)
+        setService(res.data)
+        setLoading(false)
+      } catch (error) {
+        console.error('Failed to fetch service details:', error)
+        setLoading(false)
+      }
+    }
+    fetchServiceDetails()
+  }, [serviceId])
+
+  if (loading) return <p>Loading service details...</p>
+  if (!service) return <p>Service not found.</p>
+
   return (
     <div className="service-details">
       <section className="image-container">
         <div>
-          <img src={services.background_image} alt={services.name} />
+          <img
+            src={service.background_image || 'https://via.placeholder.com/300'}
+            alt={service.title}
+          />
         </div>
       </section>
       <section className="details">
         <div className="flex-row space">
-          <h2>{services.name}</h2>
-          <h2>Rating: {services.rating}/5</h2>
+          <h2>{service.title}</h2>
+          <h2>Price: ${service.price}</h2>
         </div>
         <div>
           <h3>Description</h3>
-          <p>{services.description}</p>
+          <p>{service.description}</p>
         </div>
       </section>
     </div>
