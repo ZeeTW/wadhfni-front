@@ -5,9 +5,9 @@ import { useNavigate, Link } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
-  let initialState = { email: '', password: '' }
+  let initialState = { name: '', password: '' }
 
-  const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const [formValues, setFormValues] = useState({ name: '', password: '' })
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -44,7 +44,7 @@ const SignIn = ({ setUser }) => {
           <p>Sign In</p>
         </div>
         <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
+          {/* <div className="input-wrapper">
             <label htmlFor="email">Email</label>
             <input
               onChange={handleChange}
@@ -52,6 +52,17 @@ const SignIn = ({ setUser }) => {
               type="email"
               placeholder="example@example.com"
               value={formValues.email}
+              required
+            />
+          </div> */}
+          <div className="input-wrapper">
+            <label htmlFor="name">name</label>
+            <input
+              onChange={handleChange}
+              name="name"
+              type="text"
+              placeholder="your name"
+              value={formValues.name}
               required
             />
           </div>
@@ -65,7 +76,7 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
+          <button disabled={!formValues.password}>
             Sign In
           </button>
         </form>

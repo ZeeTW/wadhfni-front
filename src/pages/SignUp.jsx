@@ -8,7 +8,8 @@ const SignUp = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    role:''
   })
 
   const handleChange = (e) => {
@@ -19,18 +20,21 @@ const SignUp = () => {
     e.preventDefault()
     try {
       // Call the SignUpUser function from services
-      await SignUpUser({
+      let res = await SignUpUser({
         name: formValues.name,
         email: formValues.email,
-        password: formValues.password
+        password: formValues.password,
+        role:formValues.role
       })
+console.log(res);
 
       // Reset the form values after successful signup
       setFormValues({
         name: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        role: ''
       })
 
       // Redirect to the sign-in page after registration
@@ -93,10 +97,19 @@ const SignUp = () => {
               required
             />
           </div>
+          <div className="input-wrapper">
+            <label>Choose your role: </label>
+            <select name='role' onChange={handleChange} value={formValues.role}> 
+              <option value="" disabled>Select</option>
+              <option value="freelancer">Freelancer</option>
+              <option value="employer">Employer</option>
+            </select>
+          </div>
           <button
             disabled={
               !formValues.email ||
-              formValues.password !== formValues.confirmPassword
+              (!formValues.password &&
+                formValues.confirmPassword === formValues.password) 
             }
           >
             Sign Up

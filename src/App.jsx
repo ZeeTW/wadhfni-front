@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import Nav from './components/Nav'
-import NavLinks from './components/NavLinks'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Feed from './pages/Feed'

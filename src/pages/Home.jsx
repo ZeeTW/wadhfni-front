@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Search from '../components/Search' // Assuming you already have a Search component
-import NavLinks from '../components/NavLinks' // Assuming you have NavLinks for routing
+
 import CategoryCard from '../components/CategoryCard' // Import CategoryCard component
 
 const Home = () => {
@@ -19,7 +19,6 @@ const Home = () => {
   return (
     <div>
       {/* Navigation Bar */}
-      <NavLinks />
 
       {/* Search Bar */}
       <div className="search-bar-container">
