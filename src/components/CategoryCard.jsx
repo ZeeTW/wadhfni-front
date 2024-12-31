@@ -25,10 +25,18 @@ const CategoryCard = () => {
           categories.map((category) => (
             <div key={category._id} className="category-card">
               <Link
-                to={`/services?category=${category.name}`}
+                to={`/CategoryServices/${category._id}`}
                 className="category-link"
               >
-                <div className="category-card-content">
+                <div className="img-wrapper">
+                  <img
+                    src={
+                      category.image || 'https://via.placeholder.com/150' // Default image if none exists
+                    }
+                    alt={category.name}
+                  />
+                </div>
+                <div className="info-wrapper flex-col">
                   <h4>{category.name}</h4>
                   <p>{category.description}</p>
                 </div>
