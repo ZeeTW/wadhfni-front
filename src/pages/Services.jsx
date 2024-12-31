@@ -3,6 +3,9 @@ const Services = ({ onClick, image, name, rating }) => {
     <div className="service detail" onClick={onClick}>
       <div className="img-wrapper">
         <img src={img} alt={name} />
+        <button id="Services-List" onClick={() => navigate('/ServicesDetails')}>
+          Services:
+        </button>
       </div>
       <div className="info-wrapper">
         <h3>{name}</h3>
