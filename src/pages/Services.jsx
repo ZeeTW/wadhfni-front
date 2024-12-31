@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom' 
+import { useLocation } from 'react-router-dom'
 import axios from 'axios'
-import ServiceCard from '../components/ServiceCard'  
+import ServiceCard from '../components/ServiceCard'
 
 const Services = () => {
   const [services, setServices] = useState([])
@@ -16,7 +16,9 @@ const Services = () => {
     const fetchServices = async () => {
       if (categoryId) {
         try {
-          const response = await axios.get(`http://localhost:3001/services?categoryId=${categoryId}`)
+          const response = await axios.get(
+            `http://localhost:3001/services?categoryId=${categoryId}`
+          )
           setServices(response.data)
           setLoading(false)
         } catch (error) {
