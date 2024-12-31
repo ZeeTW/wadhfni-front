@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Search from '../components/Search'
-import NavLinks from '../components/NavLinks'
 
 const Home = () => {
     const [searchValue, setSearchValue] = useState('')

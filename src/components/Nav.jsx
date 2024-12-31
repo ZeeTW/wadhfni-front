@@ -20,7 +20,7 @@ const Nav = ({ handleLogOut, user }) => {
         <>
         <a href="/auth/profile">
         <img
-          src="<%= user.profilePicture %>"
+          src={user.profilePicture}
           id="profile-image"
           width="60"
           height="60"
