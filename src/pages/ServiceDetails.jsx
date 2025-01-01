@@ -22,13 +22,13 @@ const ServiceDetails = () => {
     if (serviceId) {
       fetchService()
     }
-  }, [serviceId]) // Re-fetch if serviceId changes
+  }, []) // Re-fetch if serviceId changes
 
   return (
     <div className="service-details-page">
       <h2>Service Details</h2>
       {service ? (
-        <ServiceDetailsCard service={service} />
+        <ServiceDetailsCard key={service._id} service={service} />
       ) : (
         <p>Service not found or loading...</p>
       )}

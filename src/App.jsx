@@ -45,7 +45,7 @@ const App = () => {
           <Route path="/PendingOrder" element={<PendingOrder />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/ViewCategories" element={<ViewCategories />} />
-          <Route path="/services/:serviceId" element={<ServiceDetails />} />
+          <Route path={'/services/:serviceId'} element={<ServiceDetails />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/feed" element={<Feed user={user} />} />
