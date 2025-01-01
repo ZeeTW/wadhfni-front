@@ -1,42 +1,55 @@
-// src/components/ServiceDetailsCard.jsx
-import React from 'react'
-import Client from '../services/api' // Import Client to make API requests
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const ServiceDetailsCard = ({ service, onOrderClick }) => {
-  // This is where you might handle future API calls using `Client` if needed
-  // Example: making an order request when the user clicks the "Order Service" button
+const ServiceDetailsCard = ({ service }) => {
+  const navigate = useNavigate()
 
   const handleOrderClick = async () => {
     try {
-      // Example of sending an order request to your backend (adjust as per your backend API)
-      const orderData = {
-        serviceId: service._id,
-        userId: localStorage.getItem('userId'), // or use context to get user info
-        status: 'pending'
-      }
+      const response = await axios.post(
+        'http://localhost:3001/orders',
+        {
+          buyer: localStorage.getItem('userId'),
+          serviceId: service._id,
+          status: 'Pending',
+          price: service.price || 3000,
+          order_date: new Date(), // Current date
+          delivery_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days later
+          payment_status: 'pending'
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      )
 
-      const response = await Client.post('/orders', orderData)
-      console.log('Order placed successfully:', response.data)
-      onOrderClick() // Execute the parent component's onOrderClick function after successful order
+      console.log('Order placed:', response.data)
+
+      // Redirect to OrderDetails with orderId
+      navigate(`/OrderDetails?orderId=${response.data._id}`)
     } catch (error) {
-      console.error('Failed to place the order:', error)
+      console.error(
+        'Failed to place order:',
+        error.response?.data || error.message
+      )
     }
   }
 
   return (
     <div className="service-card">
-      <h3>{service.title}</h3>
+      <h3>{service.title || 'No Title Available'}</h3>
       <p>
-        <strong>Description:</strong> {service.description}
+        <strong>Description:</strong> {service.description || 'No Description'}
       </p>
       <p>
-        <strong>Price:</strong> ${service.price}
+        <strong>Price:</strong> ${service.price || 'N/A'}
       </p>
       <p>
-        <strong>Duration:</strong> {service.duration}
+        <strong>Duration:</strong> {service.duration || 'N/A'}
       </p>
       <p>
-        <strong>Status:</strong> {service.status}
+        <strong>Status:</strong> {service.status || 'N/A'}
       </p>
       <button onClick={handleOrderClick}>Order Service</button>
     </div>

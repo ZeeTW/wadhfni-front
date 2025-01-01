@@ -48,7 +48,11 @@ const ServiceDetails = () => {
       ) : error ? (
         <p>{error}</p>
       ) : service ? (
-        <ServiceDetailsCard service={service} onOrderClick={handleOrderClick} />
+        <ServiceDetailsCard
+          key={service._id}
+          service={service}
+          onOrderClick={handleOrderClick}
+        />
       ) : (
         <p>Service not found.</p>
       )}
