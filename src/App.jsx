@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router'
 import Nav from './components/Nav'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
-import Feed from './pages/Feed'
 import Cover from './pages/Cover'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -16,6 +15,9 @@ import ViewCategories from './pages/ViewCategories'
 import './App.css'
 import { CheckSession } from './services/Auth'
 import Services from './pages/Services'
+import UpdateProfile from './pages/UpdateProfile'
+
+
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogOut = () => {
@@ -48,9 +50,9 @@ const App = () => {
           <Route path="/ServiceDetails" element={<ServiceDetails />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/ServiceForm" element={<ServiceForm />} />
           <Route path={'/services'} element={<Services/>} />
+          <Route path={'/UpdateProfile'} element={<UpdateProfile />} />
         </Routes>
       </main>
     </div>
