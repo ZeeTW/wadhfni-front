@@ -4,9 +4,9 @@ import axios from 'axios'
 import ServiceDetailsCard from '../components/ServiceDetailsCard'
 
 const ServiceDetails = () => {
-  const { serviceId } = useParams() // Get serviceId from URL
+  const { serviceId } = useParams()
   const [service, setService] = useState(null)
-  const navigate = useNavigate() // Initialize the navigate function
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchService = async () => {
@@ -23,28 +23,34 @@ const ServiceDetails = () => {
     if (serviceId) {
       fetchService()
     }
-  }, [serviceId]) // Re-fetch if serviceId changes
+  }, [serviceId])
 
   const handleClick = async () => {
     if (!service) {
-      console.log('Service not available')
+      console.error('Service not available')
       return
     }
 
     try {
-      // Prepare order details with just the serviceId
       const orderDetails = {
-        serviceId: service._id // Only serviceId
+        serviceId: service._id,
+        title: service.title,
+        status: 'pending',
+        price: service.price,
+        order_date: new Date(),
+        payment_status: 'pending'
       }
 
-      // Send POST request to create the order
+      // Create order in the backend
       const response = await axios.post(
         'http://localhost:3001/orders',
         orderDetails
       )
 
-      // Redirect to the OrderDetails page with the newly created order ID
-      navigate(`/orders/${response.data._id}`)
+      console.log('Order created:', response.data)
+
+      // Redirect to OrderDetails page
+      navigate(`/OrderDetails/${response.data._id}`)
     } catch (error) {
       console.error('Error creating order:', error)
     }
@@ -56,7 +62,6 @@ const ServiceDetails = () => {
       {service ? (
         <div>
           <ServiceDetailsCard key={service._id} service={service} />
-          {/* Direct button click without form */}
           <button onClick={handleClick}>Order this Service</button>
         </div>
       ) : (

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const OrderDetails = () => {
-  const { orderId } = useParams() // Get orderId from URL
+  const { orderId } = useParams()
   const [order, setOrder] = useState(null)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const OrderDetails = () => {
     if (orderId) {
       fetchOrder()
     }
-  }, [orderId]) // Re-fetch when orderId changes
+  }, [orderId])
 
   return (
     <div className="order-details-page">
@@ -29,7 +29,7 @@ const OrderDetails = () => {
       {order ? (
         <div>
           <p>
-            <strong>Service Title:</strong> {order.serviceId.title}
+            <strong>Order Title:</strong> {order.title || 'N/A'}
           </p>
           <p>
             <strong>Status:</strong> {order.status}
@@ -39,7 +39,9 @@ const OrderDetails = () => {
           </p>
           <p>
             <strong>Order Date:</strong>{' '}
-            {new Date(order.order_date).toLocaleDateString()}
+            {order.order_date
+              ? new Date(order.order_date).toLocaleDateString()
+              : 'N/A'}
           </p>
           <p>
             <strong>Payment Status:</strong> {order.payment_status}
