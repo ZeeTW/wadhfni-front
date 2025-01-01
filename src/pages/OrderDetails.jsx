@@ -1,20 +1,53 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const OrderDetails = () => {
+  const { orderId } = useParams() // Get orderId from URL
+  const [order, setOrder] = useState(null)
+
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/orders/${orderId}`
+        )
+        setOrder(response.data)
+      } catch (error) {
+        console.error('Failed to fetch order:', error)
+      }
+    }
+
+    if (orderId) {
+      fetchOrder()
+    }
+  }, [orderId]) // Re-fetch when orderId changes
+
   return (
-    <div>
+    <div className="order-details-page">
       <h2>Order Details</h2>
-      <p>Here you can view the details of the order.</p>
-      <ul>
-        <li>Order ID: {props.user.orderId}</li>
-        <li>Customer Name: {props.user.name}</li>
-        <li>Status: {props.user.status}</li>
-        <li>Total Price: {props.user.price} BHD</li>
-        <li>Date Ordered: {props.user.dateOrder}</li>
-        <li>Delivery Date: {props.user.deliveryDate}</li>
-      </ul>
+      {order ? (
+        <div>
+          <p>
+            <strong>Service Title:</strong> {order.serviceId.title}
+          </p>
+          <p>
+            <strong>Status:</strong> {order.status}
+          </p>
+          <p>
+            <strong>Price:</strong> ${order.price}
+          </p>
+          <p>
+            <strong>Order Date:</strong>{' '}
+            {new Date(order.order_date).toLocaleDateString()}
+          </p>
+          <p>
+            <strong>Payment Status:</strong> {order.payment_status}
+          </p>
+        </div>
+      ) : (
+        <p>Order not found or loading...</p>
+      )}
     </div>
   )
 }
