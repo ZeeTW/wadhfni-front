@@ -8,8 +8,7 @@ const CategoryCard = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await GetCategories()
-        console.log('Fetched Categories:', data)  // Check the structure of the response
+        const data = await GetCategories()  // Check the structure of the response
         if (Array.isArray(data)) {
           setCategories(data)
         } else {
