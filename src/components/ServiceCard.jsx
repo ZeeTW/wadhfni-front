@@ -1,7 +1,12 @@
-const ServiceCard = ({service}) => {
-  return(
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const ServiceCard = ({ service }) => {
+  return (
     <div className="service-card">
-      <h3>{service.title}</h3>
+      <Link to={`/services/${service._id}`}>
+        <h3>{service.title}</h3>
+      </Link>
     </div>
   )
 }
