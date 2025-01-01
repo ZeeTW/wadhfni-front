@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { SignInUser } from '../services/Auth'
 import { useNavigate, Link } from 'react-router-dom'
 
-
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
   let initialState = { name: '', password: '' }
@@ -19,14 +18,21 @@ const SignIn = ({ setUser }) => {
       // Call the SignInUser function from services to log in
       const payload = await SignInUser(formValues)
 
-      // Reset the form values after successful login
       setFormValues(initialState)
 
-      // Set user context
       setUser(payload)
 
+
       // Store the token in localStorage
-      localStorage.setItem('token', payload.token)
+      setTimeout(() => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            console.log('Token found. Navigating to home...')
+            navigate('/home') // Proceed to home page
+        } else {
+            console.error('Token not found in localStorage!')
+        }
+    }, 100)
 
       // Redirect to home page after successful login
       navigate('/home')
@@ -76,9 +82,7 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
-          <button disabled={!formValues.password}>
-            Sign In
-          </button>
+          <button disabled={!formValues.password}>Sign In</button>
         </form>
         <p>A new Member to the Family??</p>
         <p>

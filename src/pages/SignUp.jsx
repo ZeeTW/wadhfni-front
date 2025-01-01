@@ -24,6 +24,7 @@ const SignUp = () => {
         name: formValues.name,
         email: formValues.email,
         password: formValues.password,
+        location: formValues.location,
         role:formValues.role
       })
 console.log(res);
@@ -34,6 +35,7 @@ console.log(res);
         email: '',
         password: '',
         confirmPassword: '',
+        location:'',
         role: ''
       })
 
@@ -94,6 +96,16 @@ console.log(res);
               type="password"
               name="confirmPassword"
               value={formValues.confirmPassword}
+              required
+            />
+          </div>
+          <div>
+            <label>Location:</label>
+            <input
+              onChange={handleChange}
+              type="text"
+              name="location"
+              value={formValues.location}
               required
             />
           </div>
