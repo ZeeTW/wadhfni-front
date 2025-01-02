@@ -10,7 +10,8 @@ const Nav = ({ handleLogOut, user }) => {
         <Link onClick={handleLogOut} to="/">
           Sign Out
         </Link>
-        <Link to="/category/:categoryId">Id</Link>
+        <Link to="/Profile/:userId">Profile</Link>
+        {/* <Link to="/category/:categoryId">Id</Link> */}
       </nav>
     )
   }
