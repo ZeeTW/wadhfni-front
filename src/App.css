@@ -1,84 +1,53 @@
+/* home.css */
+.search-bar-container {
+  margin: 20px;
+  text-align: center;
+}
+
+.category-cards-container {
+  padding: 20px;
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.category-link {
+  text-decoration: none;
+}
+
+.category-card-content h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;}
+
 body {
   margin: 0;
-  padding: 0;
-  background-color: #FFFFFF;
+  background-color: lightsalmon;
 }
 
-.header-link {
-  display: flex;
-  justify-content:space-around;
-  align-items: center;
-  background-color: #eab676;
-  height: 40px;
+.search-input {
+  padding: 10px;
+  width: 200px;
 }
 
-#link-1 {
-color: black;
-position: relative;
-right: 30px;
-font-size: 25px;
-text-decoration: none;
-}
-
-#link-2 {
-  color: black;
-  position: relative;
-  right: 10px;
-  font-size: 25px;
-  text-decoration: none;
-  }
-
-  #link-3 {
-    color: black;
-    position: relative;
-    left: 10px;
-    font-size: 25px;
-    text-decoration: none;
-  }
-
-  #link-4 {
-    color: black;
-    position: relative;
-    left: 30px;
-    font-size: 25px;
-    text-decoration: none;
-  }
-
-/* sing up */
-
-.col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.signin {
-  min-height: calc(100vh - 4em);
-  align-items: center;
-  justify-content: center;
-}
-
-.card-overlay {
-  /* border: 2px solid var(--primary-button-hover); */
-  width: 60%;
-  height: 400px;
-  padding: 1em;
-  border-radius: 80px;
-  background-color: #eab676;
-  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-form,
-.input-wrapper {
-  margin: auto;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.form {
-  width: 100px;
+.search-button {
+  padding: 10px;
+  cursor: pointer;
 }
 
