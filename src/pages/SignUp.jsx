@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { SignUpUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 
-
 const SignUp = () => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
@@ -10,9 +9,8 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: ''
-  }
-  )
-  
+  })
+
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
@@ -37,11 +35,11 @@ const SignUp = () => {
     <div className="signin col">
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
-        <div className='title-of-SignUp'>
-          <h2>WELCOME NEW MEMBER!</h2>
-          <p>Sign Up</p>
-        </div>
-          
+          <div className="title-of-SignUp">
+            <h2>WELCOME NEW MEMBER!</h2>
+            <p>Sign Up</p>
+          </div>
+
           <div className="input-wrapper">
             <label htmlFor="name">Name</label>
             <input
