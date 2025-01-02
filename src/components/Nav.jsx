@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 
+
 const Nav = ({ handleLogOut, user }) => {
   
   return (
-    
+    <header className='headr-nav'>
     <nav>
     <div>
       {user && (
@@ -30,6 +31,7 @@ const Nav = ({ handleLogOut, user }) => {
       )}
     </div>
     </nav>
+    </header>
   )
 }
 

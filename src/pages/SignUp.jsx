@@ -3,7 +3,7 @@ import { SignUpUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 
 
-const SignUp = () => {
+const Register = () => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     name: '',
@@ -19,7 +19,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await SignUpUser({
+    await RegisterUser({
       name: formValues.name,
       email: formValues.email,
       password: formValues.password
@@ -37,7 +37,7 @@ const SignUp = () => {
     <div className="signin col">
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
-        <div className='title-of-SignUp'>
+        <div className='title-of-Register'>
           <h2>WELCOME NEW MEMBER!</h2>
           <p>Sign Up</p>
         </div>
@@ -100,4 +100,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Register

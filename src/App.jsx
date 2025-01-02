@@ -9,7 +9,6 @@ import Cover from './pages/Cover'
 import Home from './pages/Home'
 import About from './pages/About'
 import OrderDetails from './pages/OrderDetails'
-import PendingOrder from './pages/PendingOrder'
 import Profile from './pages/Profile'
 import ServiceForm from './pages/ServiceForm'
 import ServiceDetails from './pages/ServiceDetails'
@@ -17,6 +16,7 @@ import ViewCategories from './pages/ViewCategories'
 import MyOrders from './pages/MyOrders'
 import './App.css'
 import { CheckSession } from './services/Auth'
+
 
 
 const App = () => {
@@ -53,7 +53,6 @@ const App = () => {
           <Route path="/Home" element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/OrderDetails" element={<OrderDetails />} />
-          <Route path="/PendingOrder" element={<PendingOrder />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/MyOrders" element={<MyOrders />} />
           <Route path="/ViewCategories" element={<ViewCategories />} />
