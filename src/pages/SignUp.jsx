@@ -17,18 +17,33 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await SignUpUser({
-      name: formValues.name,
-      email: formValues.email,
-      password: formValues.password
-    })
-    setFormValues({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    })
-    navigate('/signin')
+    try {
+      // Call the SignUpUser function from services
+      let res = await SignUpUser({
+        name: formValues.name,
+        email: formValues.email,
+        password: formValues.password,
+        location: formValues.location,
+        role: formValues.role
+      })
+      console.log(res)
+
+      // Reset the form values after successful signup
+      setFormValues({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        location: '',
+        role: ''
+      })
+
+      // Redirect to the sign-in page after registration
+      navigate('/signin')
+    } catch (error) {
+      console.error('Signup error:', error)
+      // Add any error handling here, e.g., set error state
+    }
   }
 
   return (
@@ -83,6 +98,26 @@ const SignUp = () => {
               required
             />
           </div>
+          <div>
+            <label>Location:</label>
+            <input
+              onChange={handleChange}
+              type="text"
+              name="location"
+              value={formValues.location}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <label>Choose your role: </label>
+            <select name="role" onChange={handleChange} value={formValues.role}>
+              <option value="" disabled>
+                Select
+              </option>
+              <option value="freelancer">Freelancer</option>
+              <option value="employer">Employer</option>
+            </select>
+          </div>
           <button
             disabled={
               !formValues.email ||
@@ -90,7 +125,7 @@ const SignUp = () => {
                 formValues.confirmPassword === formValues.password)
             }
           >
-            Sign In
+            Sign Up
           </button>
         </form>
       </div>

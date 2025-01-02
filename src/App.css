@@ -1,5 +1,44 @@
+/* home.css */
+.search-bar-container {
+  margin: 20px;
+  text-align: center;
+}
+
+.category-cards-container {
+  padding: 20px;
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.category-link {
+  text-decoration: none;
+}
+
+.category-card-content h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;}
+
 body {
   margin: 0;
+<<<<<<< HEAD
   padding: 0;
   background-color: #ffffff;
 }
@@ -44,4 +83,18 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+=======
+  background-color: lightsalmon;
+>>>>>>> a6f360fee998e0f8ede2b2229f088245992a79f4
 }
+
+.search-input {
+  padding: 10px;
+  width: 200px;
+}
+
+.search-button {
+  padding: 10px;
+  cursor: pointer;
+}
+

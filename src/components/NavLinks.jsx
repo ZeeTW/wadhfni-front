@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+<<<<<<< HEAD
 const NavLinks = ({ user }) => {
   return (
     <div>
@@ -14,6 +15,16 @@ const NavLinks = ({ user }) => {
         </>
       )}
     </div>
+=======
+const NavLinks = () => {
+  return (
+    <nav className="navbar">
+      <ul>
+        <Link to="/about">About</Link>
+        <Link to="/profile">Profile</Link>
+      </ul>
+    </nav>
+>>>>>>> a6f360fee998e0f8ede2b2229f088245992a79f4
   )
 }
 
