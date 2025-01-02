@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 :root {
   --primary-bg: #000411;
@@ -156,9 +157,58 @@ form button:disabled {
   width: 100%;
 }
 .protected {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
+=======
+/* home.css */
+.search-bar-container {
+  margin: 20px;
+  text-align: center;
 }
+
+.category-cards-container {
+  padding: 20px;
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.category-link {
+  text-decoration: none;
+}
+
+.category-card-content h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.search-form {
+>>>>>>> a6f360fee998e0f8ede2b2229f088245992a79f4
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;}
+
+body {
+  margin: 0;
+  background-color: lightsalmon;
+}
+
+.search-input {
+  padding: 10px;
+  width: 200px;
+}
+
+.search-button {
+  padding: 10px;
+  cursor: pointer;
+}
+
