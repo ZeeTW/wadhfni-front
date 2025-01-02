@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* home.css */
 .search-bar-container {
   margin: 20px;
@@ -35,12 +34,11 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 20px;
-=======
+  margin-bottom: 20px;}
+
 body {
   margin: 0;
-  background-color: aqua;
->>>>>>> ae852e6ff9a7851736c3c54eafcbd33600d2fe8d
+  background-color: lightsalmon;
 }
 
 .search-input {
@@ -53,4 +51,3 @@ body {
   cursor: pointer;
 }
 
-/* you can delete this  */
