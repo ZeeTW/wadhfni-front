@@ -10,6 +10,8 @@ import './App.css'
 import { CheckSession } from './services/Auth'
 import Services from './pages/Services'
 import UpdateProfile from './pages/UpdateProfile'
+import ShowServices from './pages/ShowServices'
+import ShowOrders from './pages/ShowOrders'
 
 const App = () => {
   const [user, setUser] = useState(null)
