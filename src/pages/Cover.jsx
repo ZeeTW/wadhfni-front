@@ -6,18 +6,17 @@ const Cover = () => {
   let navigate = useNavigate()
 
   return (
-    <div className='cover'>
-    <div className="home-container col">
-      <section className="welcome-signin">
-        <button id='freelancer-button' onClick={() => navigate('/signin')}>
-          A Freelancer?
-        </button>
-        <button id='employer-button' onClick={() => navigate('/signin')}>
-          An Employer?
-        </button>
-      </section>
-      
-    </div>
+    <div className="cover">
+      <div className="home-container col">
+        <section className="welcome-signin">
+          <button id="freelancer-button" onClick={() => navigate('/signin')}>
+            A Freelancer?
+          </button>
+          <button id="employer-button" onClick={() => navigate('/signin')}>
+            An Employer?
+          </button>
+        </section>
+      </div>
     </div>
   )
 }

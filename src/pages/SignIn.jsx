@@ -22,17 +22,16 @@ const SignIn = ({ setUser }) => {
 
       setUser(payload)
 
-
       // Store the token in localStorage
       setTimeout(() => {
         const token = localStorage.getItem('token')
         if (token) {
-            console.log('Token found. Navigating to home...')
-            navigate('/home') // Proceed to home page
+          console.log('Token found. Navigating to home...')
+          navigate('/home') // Proceed to home page
         } else {
-            console.error('Token not found in localStorage!')
+          console.error('Token not found in localStorage!')
         }
-    }, 100)
+      }, 100)
 
       // Redirect to home page after successful login
       navigate('/home')
