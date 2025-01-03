@@ -1,13 +1,12 @@
 import React from 'react'
 
 const About = () => {
-
-return (
+  return (
     <div>
-    <h1>About Page</h1>
-    <p className="about-paragraph">About Wa'6fni</p>
-</div>
-)
+      <h1>About Page</h1>
+      <p className="about-paragraph">About Wa'6fni</p>
+    </div>
+  )
 }
 
 export default About

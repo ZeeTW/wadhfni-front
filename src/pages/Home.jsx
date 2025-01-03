@@ -8,10 +8,10 @@ const Home = () => {
     const token = localStorage.getItem('token')
     console.log('Token on /home page load:', token)
     if (!token) {
-        console.error('Token is missing! Redirecting to Sign In...')
-        navigate('/signin') // Redirect back to login if token is missing
+      console.error('Token is missing! Redirecting to Sign In...')
+      navigate('/signin') // Redirect back to login if token is missing
     }
-}, [])
+  }, [])
   const [searchValue, setSearchValue] = useState('')
 
   const handleSearchChange = (e) => {

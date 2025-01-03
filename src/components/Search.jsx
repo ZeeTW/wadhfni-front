@@ -1,16 +1,14 @@
-const Search = ({ value, onChange, onSubmit }) => {
+const Search = ({ onSubmit, onChange, value }) => {
   return (
-    <form onSubmit={onSubmit} className="search-form">
+    <form onSubmit={onSubmit}>
       <input
         type="text"
+        name="search"
         value={value}
+        placeholder="Search Services"
         onChange={onChange}
-        placeholder="Search for services..."
-        className="search-input"
       />
-      <button type="submit" className="search-button">
-        Search
-      </button>
+      <button type="submit">Search</button>
     </form>
   )
 }

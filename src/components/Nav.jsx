@@ -1,26 +1,35 @@
 import { Link } from 'react-router-dom'
 
 const Nav = ({ handleLogOut, user }) => {
-  let userOptions
-  if (user) {
-    userOptions = (
-      <nav>
-        <h3>Welcome {user.email}</h3>
-        <Link to="/About">About</Link>
-        <Link to="/profile" >Profile</Link>
-        <Link onClick={handleLogOut} to="/">
-          Sign Out
-        </Link>
-        <Link to="/category/:categoryId">Id</Link>
-      </nav>
-    )
-  }
-
-  const publicOptions = (
+  return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/SignUp">Register</Link>
-      <Link to="/signin">Sign In</Link>
+      <div>
+        {user && (
+          <>
+            <Link to="/About">About</Link>
+            <Link to="/ViewCategories">View Categories</Link>
+            <Link onClick={handleLogOut} to="/">
+              Sign Out
+            </Link>
+          </>
+        )}
+      </div>
+
+      <div>
+        {user && (
+          <>
+            <a href="/auth/profile">
+              <img
+                src="<%= user.profilePicture %>"
+                id="profile-image"
+                width="60"
+                height="60"
+                style="border-radius: 50%"
+              />
+            </a>
+          </>
+        )}
+      </div>
     </nav>
   )
   return <header>{user ? userOptions : publicOptions}</header>

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-
 const UpdateProfile = () => {
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -27,8 +26,8 @@ const UpdateProfile = () => {
 
         const response = await axios.get('http://localhost:3001/profile', {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         })
         setProfile(response.data)
       } catch (err) {
@@ -36,7 +35,7 @@ const UpdateProfile = () => {
         setError('Failed to load profile.')
         if (err.response?.status === 401) {
           localStorage.removeItem('token')
-          navigate('/signin') 
+          navigate('/signin')
         }
       } finally {
         setLoading(false)
@@ -57,11 +56,15 @@ const UpdateProfile = () => {
       }
 
       const formData = new FormData(e.target)
-      const response = await axios.put('http://localhost:3001/profile', formData, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-      })
+      const response = await axios.put(
+        'http://localhost:3001/profile',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
 
       setSuccess(true)
       console.log('Profile updated successfully:', response.data)
@@ -78,8 +81,10 @@ const UpdateProfile = () => {
   return (
     <div className="update-profile-container">
       <h1>Update Profile</h1>
-      {success && <p className="success-message">Profile updated successfully!</p>}
-      <form onSubmit={handleSubmit} >
+      {success && (
+        <p className="success-message">Profile updated successfully!</p>
+      )}
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
           <input
@@ -111,7 +116,6 @@ const UpdateProfile = () => {
             defaultValue={profile.location || ''}
           />
         </div>
-
 
         <button type="submit">Update Profile</button>
       </form>

@@ -3,7 +3,7 @@ import axios from 'axios'
 // Fetch all categories
 export const GetCategories = async () => {
   try {
-    const res = await axios.get('http://localhost:3001/categories') 
+    const res = await axios.get('http://localhost:3001/categories')
     return res.data
   } catch (error) {
     throw error
