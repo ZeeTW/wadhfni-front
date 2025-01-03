@@ -41,10 +41,16 @@ const ServiceDetails = () => {
         payment_status: 'pending'
       }
 
+      const token = localStorage.getItem('token')
       // Create order in the backend
       const response = await axios.post(
         'http://localhost:3001/orders',
-        orderDetails
+        orderDetails,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       )
 
       console.log('Order created:', response.data)
