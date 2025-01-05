@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import axios from 'axios'
 
 const ServiceForm = () => {
@@ -11,6 +13,7 @@ const ServiceForm = () => {
   })
 
   const [categories, setCategories] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getCategories = async () => {
@@ -46,6 +49,7 @@ const ServiceForm = () => {
         }
       )
       console.log('Service Created:', response.data)
+      navigate(`/home`)
     } catch (error) {
       console.log(error)
     }

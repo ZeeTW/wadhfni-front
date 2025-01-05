@@ -10,9 +10,7 @@ const ShowOrderCard = ({ order, onDelete }) => {
       <p>
         <strong>Price:</strong> ${order.price}
       </p>
-      <Link to={`/OrderDetails/${order._id}`}>
-        <button>View Details</button>
-      </Link>
+
       <button onClick={onDelete} style={{ color: 'red' }}>
         Delete Order
       </button>

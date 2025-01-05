@@ -1,34 +1,43 @@
 import { useState, useEffect } from 'react'
-import Search from '../components/Search' // Assuming you already have a Search component
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
-import CategoryCard from '../components/CategoryCard' // Import CategoryCard component
+import Search from '../components/Search'
+import CategoryCard from '../components/CategoryCard'
+import ServiceCard from '../components/ServiceCard'
 
 const Home = () => {
+  const [searchValue, setSearchValue] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const navigate = useNavigate()
+
   useEffect(() => {
     const token = localStorage.getItem('token')
 
     if (!token) {
-        console.error('Token is missing! Redirecting to Sign In...')
-        navigate('/signin') // Redirect back to login if token is missing
+      console.error('Token is missing! Redirecting to Sign In...')
+      navigate('/signin')
     }
-}, [])
-  const [searchValue, setSearchValue] = useState('')
+  }, [navigate])
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value)
   }
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault()
-
-    // Optionally, perform a search here based on the search value
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/services/search?query=${searchValue}`
+      )
+      setSearchResults(response.data)
+    } catch (error) {
+      console.error('Error fetching search results:', error)
+    }
   }
 
   return (
     <div>
-      {/* Navigation Bar */}
-
-      {/* Search Bar */}
       <div className="search-bar-container">
         <Search
           value={searchValue}
@@ -37,9 +46,24 @@ const Home = () => {
         />
       </div>
 
-      {/* Category Card */}
+      <h2>Search Results</h2>
+      <section className="search-results container-grid">
+        {searchResults.length > 0 ? (
+          searchResults.map((service) => (
+            <ServiceCard
+              key={service._id}
+              name={service.title}
+              price={service.price}
+              onClick={() => console.log(`Clicked on ${service.title}`)}
+            />
+          ))
+        ) : (
+          <p>No results found!</p>
+        )}
+      </section>
+
       <div>
-        <CategoryCard /> {/* This will handle displaying the categories */}
+        <CategoryCard />
       </div>
     </div>
   )

@@ -43,7 +43,6 @@ const ServiceDetails = () => {
       }
 
       const token = localStorage.getItem('token')
-      // Create order in the backend
       const response = await axios.post(
         'http://localhost:3001/orders',
         orderDetails,
@@ -56,8 +55,7 @@ const ServiceDetails = () => {
 
       console.log('Order created:', response.data)
 
-      // Redirect to OrderDetails page
-      navigate(`/OrderDetails/${response.data._id}`)
+      navigate(`/home`)
     } catch (error) {
       console.error('Error creating order:', error)
     }
@@ -74,9 +72,6 @@ const ServiceDetails = () => {
       ) : (
         <p>Service not found or loading...</p>
       )}
-
-      
-
     </div>
   )
 }
