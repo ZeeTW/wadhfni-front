@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ServiceDetailsCard from '../components/ServiceDetailsCard'
+import ServiceForm from './ServiceForm'
 
 const ServiceDetails = () => {
   const { serviceId } = useParams()
@@ -73,6 +74,9 @@ const ServiceDetails = () => {
       ) : (
         <p>Service not found or loading...</p>
       )}
+
+      
+
     </div>
   )
 }

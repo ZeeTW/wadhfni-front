@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom' 
+import { useLocation, Link } from 'react-router-dom' 
 import axios from 'axios'
 import ServiceCard from '../components/ServiceCard'  
+
 
 const Services = () => {
   const [services, setServices] = useState([])
@@ -40,6 +41,11 @@ const Services = () => {
       ) : (
         <p>No services found for this category.</p>
       )}
+      <div>
+        <Link to= '/serviceform'>
+          Add a service
+        </Link>
+      </div>
     </div>
   )
 }
