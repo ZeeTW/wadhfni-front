@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
+
   const [profile, setProfile] = useState(null)
   const fetchProfile = async () => {
     try {
@@ -17,8 +18,10 @@ const Profile = () => {
       setProfile(response.data)
     } catch (error) {
       console.error(error)
+
     }
   }
+
 
   useEffect(() => {
     fetchProfile()
@@ -48,6 +51,16 @@ const Profile = () => {
       {/* Sign out and other profile-related actions */}
 
       <div>
+        {/* Role-specific Button */}
+        {profile.role === 'freelancer' ? (
+          <button onClick={() => navigate(`/ShowServices`)}>
+            Show Your Services
+          </button>
+        ) : profile.role === 'employer' ? (
+          <button onClick={() => navigate('/ShowOrders')}>
+            Show Your Orders
+          </button>
+        ) : null}
         <Link to="/signin">
           <button onClick={() => localStorage.removeItem('token')}>
             Sign Out
