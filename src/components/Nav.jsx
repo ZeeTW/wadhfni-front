@@ -4,12 +4,14 @@ const Nav = ({ handleLogOut, user }) => {
   let userOptions
   if (user) {
     userOptions = (
-      <nav>
-        <h3>Welcome {user.email}</h3>
-        <Link to="/home">Home</Link>
-        <Link to="/About">About</Link>
-        <Link to="/profile" >Profile</Link>
-        <Link onClick={handleLogOut} to="/">
+      <nav className='nav'>
+        <div className='nav-left'>
+        <p className='welcome'>Welcome, {user.email}</p>
+        <Link to="/home" className='link'>Home</Link>
+        <Link to="/About" className='link'>About</Link>
+        <Link to="/profile" className='link'>Profile</Link>
+        </div>
+        <Link onClick={handleLogOut} to="/" className='link'>
           Sign Out
         </Link>
       </nav>
@@ -17,10 +19,12 @@ const Nav = ({ handleLogOut, user }) => {
   }
 
   const publicOptions = (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/SignUp">Register</Link>
-      <Link to="/signin">Sign In</Link>
+    <nav className='nav'>
+      <Link to="/home" className='link'>Home</Link>
+      <div className='nav-left'>
+      <Link to="/SignUp" className='link'>Register</Link>
+      <Link to="/signin" className='link'>Sign In</Link>
+      </div>
     </nav>
   )
   return <header>{user ? userOptions : publicOptions}</header>
