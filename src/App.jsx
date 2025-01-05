@@ -11,7 +11,6 @@ import PendingOrder from './pages/PendingOrder'
 import Profile from './pages/Profile'
 import ServiceForm from './pages/ServiceForm'
 import ServiceDetails from './pages/ServiceDetails'
-import ViewCategories from './pages/ViewCategories'
 import './App.css'
 import { CheckSession } from './services/Auth'
 import Services from './pages/Services'
@@ -46,7 +45,6 @@ const App = () => {
           <Route path="/OrderDetails" element={<OrderDetails />} />
           <Route path="/PendingOrder" element={<PendingOrder />} />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/ViewCategories" element={<ViewCategories />} />
           <Route path="/ServiceDetails" element={<ServiceDetails />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
