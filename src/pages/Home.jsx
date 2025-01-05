@@ -38,13 +38,16 @@ const Home = () => {
 
   return (
     <div>
+
       <div className="search-bar-container">
+
         <Search
           value={searchValue}
           onChange={handleSearchChange}
           onSubmit={handleSearchSubmit}
         />
       </div>
+
 
       <h2>Search Results</h2>
       <section className="search-results container-grid">
@@ -61,6 +64,7 @@ const Home = () => {
           <p>No results found!</p>
         )}
       </section>
+
 
       <div>
         <CategoryCard />
