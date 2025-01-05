@@ -32,16 +32,23 @@ const ServiceForm = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
-    setFormData({
-      title: '',
-      price: '',
-      description: '',
-      duration: '',
-      categoryId: ''
-    })
+    try {
+      const token = localStorage.getItem('token')
+      const response = await axios.post(
+        'http://localhost:3001/services',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      console.log('Service Created:', response.data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -109,7 +116,7 @@ const ServiceForm = () => {
                 Select a Category
               </option>
               {categories.map((category) => (
-                <option key={category.id} value={category.id}>
+                <option key={category._id} value={category._id}>
                   {category.name}
                 </option>
               ))}
