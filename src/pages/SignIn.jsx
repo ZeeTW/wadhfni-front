@@ -22,16 +22,15 @@ const SignIn = ({ setUser }) => {
 
       setUser(payload)
 
-
       // Store the token in localStorage
       setTimeout(() => {
         const token = localStorage.getItem('token')
         if (token) {
-            navigate('/home') // Proceed to home page
+          navigate('/home') // Proceed to home page
         } else {
-            console.error('Token not found in localStorage!')
+          console.error('Token not found in localStorage!')
         }
-    }, 100)
+      }, 100)
 
       // Redirect to home page after successful login
       navigate('/home')
@@ -42,27 +41,16 @@ const SignIn = ({ setUser }) => {
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
-        <div className="title-of-SignIn">
-          <h2>IF YOU HAVE AN ACCOUNT</h2>
-          <p>Sign In</p>
+    <div className="auth-container">
+      <div className="auth-box">
+        <div className="auth-header">
+          <h2>Sign In</h2>
         </div>
-        <form className="col" onSubmit={handleSubmit}>
-          {/* <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
             <input
-              onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="example@example.com"
-              value={formValues.email}
-              required
-            />
-          </div> */}
-          <div className="input-wrapper">
-            <label htmlFor="name">name</label>
-            <input
+              className="form-input"
               onChange={handleChange}
               name="name"
               type="text"
@@ -71,9 +59,10 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
-          <div className="input-wrapper">
+          <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
+              className="form-input"
               onChange={handleChange}
               type="password"
               name="password"
@@ -81,10 +70,9 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
-          <button disabled={!formValues.password}>Sign In</button>
+          <button disabled={!formValues.password} className="auth-button">Sign In</button>
         </form>
-        <p>A new Member to the Family??</p>
-        <p>
+        <p className="auth-link">
           Go Ahead and <Link to="/SignUp">Sign Up</Link>
         </p>
       </div>
