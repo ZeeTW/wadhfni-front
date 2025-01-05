@@ -207,3 +207,24 @@ h2{
 .auth-link a:hover {
   text-decoration: underline;
 }
+
+.cover{
+  background-image: url('.\assets\bg.jpg');
+  background-size: cover;
+  height: 93.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#freelancer-button, #employer-button {
+  margin: 50px; 
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #c1c4c6;
+  color: rgb(53, 52, 52);
+}

@@ -26,10 +26,7 @@ const Home = () => {
 
   return (
     <div>
-      {/* Navigation Bar */}
-
-      {/* Search Bar */}
-      <div className="search-bar-container">
+      <div>
         <Search
           value={searchValue}
           onChange={handleSearchChange}
@@ -37,9 +34,8 @@ const Home = () => {
         />
       </div>
 
-      {/* Category Card */}
       <div>
-        <CategoryCard /> {/* This will handle displaying the categories */}
+        <CategoryCard />
       </div>
     </div>
   )
