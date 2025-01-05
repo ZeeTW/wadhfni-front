@@ -8,9 +8,9 @@ const ShowServices = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const token = localStorage.getItem('token') // Get token from localStorage
+        const token = localStorage.getItem('token')
         const response = await axios.get(
-          'http://localhost:3001/services/user',
+          `http://localhost:3001/services/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`
