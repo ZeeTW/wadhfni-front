@@ -6,7 +6,7 @@ import CategoryCard from '../components/CategoryCard' // Import CategoryCard com
 const Home = () => {
   useEffect(() => {
     const token = localStorage.getItem('token')
-    console.log('Token on /home page load:', token)
+
     if (!token) {
         console.error('Token is missing! Redirecting to Sign In...')
         navigate('/signin') // Redirect back to login if token is missing
@@ -20,7 +20,7 @@ const Home = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    console.log('Search for:', searchValue)
+
     // Optionally, perform a search here based on the search value
   }
 

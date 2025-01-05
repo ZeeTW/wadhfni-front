@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ServiceDetailsCard from '../components/ServiceDetailsCard'
+import ServiceForm from './ServiceForm'
 
 const ServiceDetails = () => {
   const { serviceId } = useParams()
@@ -41,10 +42,16 @@ const ServiceDetails = () => {
         payment_status: 'pending'
       }
 
+      const token = localStorage.getItem('token')
       // Create order in the backend
       const response = await axios.post(
         'http://localhost:3001/orders',
-        orderDetails
+        orderDetails,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       )
 
       console.log('Order created:', response.data)
@@ -67,6 +74,9 @@ const ServiceDetails = () => {
       ) : (
         <p>Service not found or loading...</p>
       )}
+
+      
+
     </div>
   )
 }

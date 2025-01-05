@@ -15,9 +15,7 @@ const ServiceDetailsCard = ({ service }) => {
       <p>
         <strong>Duration:</strong> {service.duration}
       </p>
-      <p>
-        <strong>Status:</strong> {service.status}
-      </p>
+
       {/* Accessing populated category and owner data */}
     </div>
   )

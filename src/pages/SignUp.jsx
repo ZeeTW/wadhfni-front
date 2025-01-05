@@ -28,7 +28,6 @@ const SignUp = () => {
       })
       console.log(res)
 
-      // Reset the form values after successful signup
       setFormValues({
         name: '',
         email: '',
@@ -38,11 +37,9 @@ const SignUp = () => {
         role: ''
       })
 
-      // Redirect to the sign-in page after registration
       navigate('/signin')
     } catch (error) {
       console.error('Signup error:', error)
-      // Add any error handling here, e.g., set error state
     }
   }
 

@@ -6,12 +6,12 @@ const Nav = ({ handleLogOut, user }) => {
     userOptions = (
       <nav>
         <h3>Welcome {user.email}</h3>
+        <Link to="/home">Home</Link>
         <Link to="/About">About</Link>
         <Link to="/profile" >Profile</Link>
         <Link onClick={handleLogOut} to="/">
           Sign Out
         </Link>
-        <Link to="/category/:categoryId">Id</Link>
       </nav>
     )
   }
