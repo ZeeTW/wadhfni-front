@@ -27,7 +27,6 @@ const SignIn = ({ setUser }) => {
       setTimeout(() => {
         const token = localStorage.getItem('token')
         if (token) {
-            console.log('Token found. Navigating to home...')
             navigate('/home') // Proceed to home page
         } else {
             console.error('Token not found in localStorage!')

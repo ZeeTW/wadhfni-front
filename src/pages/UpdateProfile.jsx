@@ -1,124 +1,98 @@
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
+// const UpdateProfile = ({user,setUser}) => {
+//   const navigate = useNavigate()
+
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     location: '',
+//     role: ''
+//   })
+//   const 
+// }
 
 const UpdateProfile = () => {
-  const [profile, setProfile] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(false)
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    location: '',
+    role: ''
+  })
+
   const navigate = useNavigate()
+  
 
-  const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
-  }
-
-  useEffect(() => {
-    const fetchProfile = async () => {
+  useEffect(()=>{
+    const profile = async () => {
       try {
         const token = localStorage.getItem('token')
-        if (!token) {
-          setError('No token found. Please log in.')
-          setLoading(false)
-          navigate('/signin')
-          return
-        }
 
-        const response = await axios.get('http://localhost:3001/profile', {
+        const response = await axios.get ('http://localhost:3001/profile', {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization : `Bearer ${token}`
+          }
         })
-        setProfile(response.data)
-      } catch (err) {
-        console.error('Error fetching profile:', err)
-        setError('Failed to load profile.')
-        if (err.response?.status === 401) {
-          localStorage.removeItem('token')
-          navigate('/signin') 
-        }
-      } finally {
-        setLoading(false)
+        setForm(response.data)
+      } catch (error) {
+        console.log(error)
       }
     }
+    profile()
+  }, [])
 
-    fetchProfile()
-  }, [navigate])
+  const handleChange = (e) => {
+    const {name, value} = e.target 
+    setForm({...form, [name]:value})
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     try {
-      const token = localStorage.getItem('token')
-      if (!token) {
-        setError('No token found. Please log in.')
-        navigate('/signin')
-        return
-      }
-
-      const formData = new FormData(e.target)
-      const response = await axios.put('http://localhost:3001/profile', formData, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-      })
-
-      setSuccess(true)
-      console.log('Profile updated successfully:', response.data)
-      navigate('/profile') // Redirect to the profile page after success
-    } catch (err) {
-      console.error('Error updating profile:', err)
-      setError('Failed to update profile. Please try again.')
+      const token = localStorage.getItem ('token')
+      const response = await axios.put('http://localhost:3001/profile', form,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
     }
   }
-
-  if (loading) return <div>Loading...</div>
-  if (error) return <p className="error-message">{error}</p>
-
-  return (
-    <div className="update-profile-container">
-      <h1>Update Profile</h1>
-      {success && <p className="success-message">Profile updated successfully!</p>}
-      <form onSubmit={handleSubmit} >
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            defaultValue={profile.name || ''}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            defaultValue={profile.email || ''}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="location">Location:</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            defaultValue={profile.location || ''}
-          />
-        </div>
-
-
-        <button type="submit">Update Profile</button>
-      </form>
-
-      <button onClick={() => navigate('/profile')}>Cancel</button>
+  return(
+<div>
+  <h1>Update Profile</h1>
+  <form onSubmit={handleSubmit}>
+    <div>
+      <label>Name:</label>
+      <input type="text" name='name' value={form.name} onChange={handleChange}/>
     </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" name='email' value={form.email} onChange={handleChange}/>
+    </div>
+    <div>
+      <label>Location:</label>
+      <input type="text" name='location' value={form.location} onChange={handleChange}/>
+    </div>
+    <div>
+      <label>Role:</label>
+      <select name="role" id="role" value={form.role}
+      onChange={handleChange}>
+        <option value="freelancer">Freelancer</option>
+        <option value="employer">Employer</option>
+      </select>
+    </div>
+
+    <button type='submit'>Update</button>
+  </form>
+</div>
   )
 }
-
 export default UpdateProfile

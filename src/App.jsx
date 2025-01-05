@@ -46,6 +46,9 @@ const App = () => {
           <Route path="/Profile" element={<Profile />} />
 
           <Route path={'/services/:serviceId'} element={<ServiceDetails />} />
+
+//           <Route path="/ServiceDetails" element={<ServiceDetails />} />
+
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/ServiceForm" element={<ServiceForm />} />
