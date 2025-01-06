@@ -27,7 +27,7 @@
   color: white;
 }
 
-.category-link:hover{
+.category-link:hover {
   color: beige;
 }
 
@@ -40,7 +40,8 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 20px;}
+  margin-bottom: 20px;
+}
 
 body {
   margin: 0;
@@ -60,37 +61,37 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:rgb(62, 58, 58);
+  background-color: rgb(62, 58, 58);
   color: white;
 }
 
-.nav-left{
+.nav-left {
   display: flex;
   align-items: center;
   margin: 0 10px;
 }
 
-.link{
+.link {
   margin: 10px 10px;
   text-decoration: none;
   font-size: 17px;
-  color:white;
+  color: white;
 }
 
-.link:hover{
-  color:rgb(199, 221, 240);
+.link:hover {
+  color: rgb(199, 221, 240);
   text-decoration: underline;
 }
 
-.welcome{
+.welcome {
   margin: 0 30px 0 0;
 }
 
-h3{
+h3 {
   font-size: 25px;
 }
 
-.service-card{
+.service-card {
   border: 1px solid #0b0b0b;
   padding: 40px 20px;
   text-align: center;
@@ -98,35 +99,35 @@ h3{
   background-color: #603d3d;
 }
 
-.service-link{
+.service-link {
   text-decoration: none;
   color: white;
   text-align: center;
   margin: auto;
 }
 
-.service-list{
+.service-list {
   display: grid;
   grid-template-columns: (3, 1fr);
   margin: 0 50px;
   gap: 20px;
 }
 
-.add-flex{
+.add-flex {
   display: flex;
   flex-direction: row;
 }
 
-.add{
+.add {
   display: block;
   margin: auto;
   text-decoration: none;
-  padding:  15px;
+  padding: 15px;
   background-color: #3e3a3a;
   color: white;
   border-radius: 25px;
 }
-h2{
+h2 {
   margin: 30px;
 }
 
@@ -134,16 +135,15 @@ h2{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
-  background-color: #f4f4f9; 
+  height: 100vh;
+  background-color: #f4f4f9;
 }
 
-
 .auth-box {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   width: 100%;
   text-align: center;
@@ -165,10 +165,9 @@ h2{
   text-align: left;
 }
 
-
 .form-group label {
   font-size: 18px;
-  color: #2b2a2a; 
+  color: #2b2a2a;
   margin: 0 0 10px 0;
   display: block;
 }
@@ -184,7 +183,7 @@ h2{
 
 .auth-button {
   padding: 10px;
-  background-color: #48443d; 
+  background-color: #48443d;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -198,7 +197,6 @@ h2{
   color: #555;
 }
 
-
 .auth-link a {
   color: #007bff;
   text-decoration: none;
@@ -208,18 +206,19 @@ h2{
   text-decoration: underline;
 }
 
-.cover{
-  background-image: url('.\assets\bg.jpg');
+.cover {
+  background-image: url('./assets/bg.jpg');
   background-size: cover;
-  height: 93.5vh;
+  height: 95vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
 
-#freelancer-button, #employer-button {
-  margin: 50px; 
+#freelancer-button,
+#employer-button {
+  margin: 50px;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
